@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/listeners/InternalFrameListener.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/gui/InternalFrameUmbralizacion.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/listeners/UmbraAutomaticaListener.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/Espacial/UmbralizacionAutomatica.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/gui/JFramePrincipal.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/herramientas/HerramientasImagen.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/gui/JInternalFrameModificar.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/gui/JInternalFrameBinarizacion.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/listeners/BinarizacionListener.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/listeners/ModificarImagenListener.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/listeners/FiltroGrisesListener.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/listeners/UmbralizacionListener.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/gui/JInternalFrameUmbraAutomatica.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/listeners/GraficarHistogramaListener.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/Espacial/Histograma.java</file>
+            <file>file:/C:/Users/Abelardo/Documents/NetBeansProjects/AnalisisImagenes2021-2-master/src/gui/JInternalFrameGrises.java</file>
+        </group>
+    </open-files>
+</project-private>
