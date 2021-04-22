@@ -5,15 +5,10 @@
  */
 package gui;
 
-import listeners.BinarizacionListener;
-import listeners.ExpansionListener;
-import listeners.FiltroGrisesListener;
-import listeners.GraficarHistogramaListener;
+import listeners.ListenersGUI;
+
 import listeners.InternalFrameListener;
-import listeners.ModificarImagenListener;
-import listeners.OtzuListener;
-import listeners.UmbraAutomaticaListener;
-import listeners.UmbralizacionListener;
+
 
 /**
  *
@@ -26,15 +21,17 @@ public class JFramePrincipal extends javax.swing.JFrame {
      */
     public JFramePrincipal() {
         initComponents();
+        ListenersGUI n = new ListenersGUI(this);
         this.jMenuItem1.addActionListener(new InternalFrameListener(this));
-        this.jMenuItem2.addActionListener(new ModificarImagenListener(this));
-        this.jMenuItem3.addActionListener(new GraficarHistogramaListener(this));
-        this.jMenuItem4.addActionListener(new FiltroGrisesListener(this));
-        this.jMenuItem5.addActionListener(new BinarizacionListener(this) );
-        this.jMenuItem6.addActionListener(new UmbralizacionListener(this));
-        this.jMenuItem7.addActionListener(new UmbraAutomaticaListener(this));
-        this.jMenuItem9.addActionListener(new OtzuListener(this));
-        this.jMenuItem10.addActionListener(new ExpansionListener(this));
+        this.jMenuItem2.addActionListener(n);
+        this.jMenuItem3.addActionListener(n);
+        this.jMenuItem4.addActionListener(n);
+        this.jMenuItem5.addActionListener(n);
+        this.jMenuItem6.addActionListener(n);
+        this.jMenuItem7.addActionListener(n);
+        this.jMenuItem9.addActionListener(n);
+        this.jMenuItem10.addActionListener(n);
+        this.jMenuItem8.addActionListener(n);
     }
 
     /**
@@ -95,7 +92,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem5.setText("Binarizacion");
         jMenu2.add(jMenuItem5);
 
-        jMenuItem8.setText("Brillo");
+        jMenuItem8.setText("Iluminación");
         jMenu2.add(jMenuItem8);
 
         jMenuItem6.setText("Umbralizacion");

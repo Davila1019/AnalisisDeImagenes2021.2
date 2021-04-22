@@ -34,7 +34,7 @@ public class Espacial {
         return bi;
     }
     
-    public BufferedImage Negativo(BufferedImage bi){
+    public static BufferedImage Negativo(BufferedImage bi){
         Color color ;
         int i,j,r,g,b;
         for(j = 0; j< bi.getHeight(); j++){
@@ -69,7 +69,7 @@ public class Espacial {
         return bi;
     }
     
-    public BufferedImage EscalaGrises(BufferedImage bi){
+    public static BufferedImage EscalaGrises(BufferedImage bi){
         Color color ;
         int i,j,aux;
         for(j = 0; j< bi.getHeight(); j++){
@@ -191,34 +191,35 @@ public class Espacial {
         return bi;
     }
     
-    public static BufferedImage expansionLineal(Histograma h, Image imagen){
+    public static BufferedImage expansionLineal(int min ,int max, Image imagen){
 
-        BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagen);
+        BufferedImage bi =herramientas.HerramientasImagen.toBufferedImage(imagen);
         Color color;
         for(int x=0; x<bi.getWidth();x++)
             for(int y=0; y<bi.getHeight();y++){
             color = new Color(bi.getRGB(x, y));
-            int r = (color.getRed()-h.getMinR())*(255/h.getMaxR()-h.getMinR());
-            int g = (color.getGreen()-h.getMinG())*(255/h.getMaxG()-h.getMinG());
-            int b = (color.getBlue()-h.getMinB())*(255/h.getMaxB()-h.getMinB());
+            int r = (color.getRed()-min)*(255/max-min);
+            int g = (color.getGreen()-min)*(255/max-min);
+            int b = (color.getBlue()-min)*(255/max-min);
             color = new Color(validarLimites(r),
             validarLimites(g),
             validarLimites(b));
             bi.setRGB(x,y,color.getRGB());
         }
-        return bi;
+        return  bi;
     }
+    
  
-    public static BufferedImage expansionLogartmica( Image imagen, int n){
+    public static BufferedImage expansionLogartmica( Image imagen){
 
         BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagen);
         Color color;
         for(int x=0; x<bi.getWidth();x++)
             for(int y=0; y<bi.getHeight();y++){
             color = new Color(bi.getRGB(x, y));
-            int r = (int)((n*Math.log(1+color.getRed()))/Math.log(n));
-            int g = (int)((n*Math.log(1+color.getGreen()))/Math.log(n));
-            int b = (int)((n*Math.log(1+color.getBlue()))/Math.log(n));
+            int r = (int)((255*Math.log(1+color.getRed()))/Math.log(1+255));
+            int g = (int)((255*Math.log(1+color.getGreen()))/Math.log(1+255));
+            int b = (int)((255*Math.log(1+color.getBlue()))/Math.log(1+255));
              color = new Color(validarLimites(r),
              validarLimites(g),
              validarLimites(b));
@@ -252,19 +253,33 @@ public class Espacial {
     
     public static BufferedImage ecualizacion( Image imagen){
 
+        int nxm = imagen.getWidth(null)*imagen.getHeight(null);
+        Histograma h = new Histograma(imagen);
+        double[] ho = h.getR();
+        double[] daf = new double[256];
+        int[] nt = new int[256];
+        daf[0] = (int)ho[0];
+        nt[0] = (int)Math.round((daf[0]/nxm)*255);
+        // recorremos el histograma para acumular
+        for(int x=1; x<ho.length;x++){
+            daf[x] = (int)(ho[x]+daf[x-1]);
+            double aux = daf[x]/nxm;
+            int tmp = (int) Math.round(aux * 255);
+            nt[x] = tmp;
+        }
+
         BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagen);
         Color color;
         for(int x=0; x<bi.getWidth();x++)
             for(int y=0; y<bi.getHeight();y++){
             color = new Color(bi.getRGB(x, y));
-            int r = (int)((Math.pow(color.getRed(), 2)));
-            int g = (int)((Math.pow(color.getGreen(), 2)));
-            int b = (int)((Math.pow(color.getBlue(), 2)));
-             color = new Color(validarLimites(r),
-             validarLimites(g),
-             validarLimites(b));
-             bi.setRGB(x,y,color.getRGB());
+            int t = color.getRed();
+            int t2 =nt[t];
+            color = new Color(t2,t2,t2);     
+            bi.setRGB(x,y,color.getRGB());
         }
+
+        
         return bi;
     }
     
