@@ -39,6 +39,8 @@ public class InternalFrameUmbralizacion extends javax.swing.JInternalFrame {
         jSlider1 = new javax.swing.JSlider();
         jSlider2 = new javax.swing.JSlider();
 
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Umbralización");
 
         jSlider1.setMajorTickSpacing(25);

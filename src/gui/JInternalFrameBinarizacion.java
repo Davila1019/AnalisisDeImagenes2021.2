@@ -40,6 +40,8 @@ public class JInternalFrameBinarizacion extends javax.swing.JInternalFrame {
 
         jSlider1 = new javax.swing.JSlider();
 
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Binarización");
 
         jSlider1.setMajorTickSpacing(25);

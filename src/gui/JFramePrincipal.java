@@ -6,10 +6,12 @@
 package gui;
 
 import listeners.BinarizacionListener;
+import listeners.ExpansionListener;
 import listeners.FiltroGrisesListener;
 import listeners.GraficarHistogramaListener;
 import listeners.InternalFrameListener;
 import listeners.ModificarImagenListener;
+import listeners.OtzuListener;
 import listeners.UmbraAutomaticaListener;
 import listeners.UmbralizacionListener;
 
@@ -31,6 +33,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
         this.jMenuItem5.addActionListener(new BinarizacionListener(this) );
         this.jMenuItem6.addActionListener(new UmbralizacionListener(this));
         this.jMenuItem7.addActionListener(new UmbraAutomaticaListener(this));
+        this.jMenuItem9.addActionListener(new OtzuListener(this));
+        this.jMenuItem10.addActionListener(new ExpansionListener(this));
     }
 
     /**
@@ -54,6 +58,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +103,12 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuItem7.setText("Umbralizacion Automatica");
         jMenu2.add(jMenuItem7);
+
+        jMenuItem9.setText("Otzu");
+        jMenu2.add(jMenuItem9);
+
+        jMenuItem10.setText("Expansión");
+        jMenu2.add(jMenuItem10);
 
         jMenuBar1.add(jMenu2);
 
@@ -158,6 +170,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -165,6 +178,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 
     /**

@@ -20,6 +20,9 @@ public class Histograma {
     private double [] g;
     private double [] b;
     private double [] gr;
+    private Integer minR,maxR;
+    private Integer minG,maxG;
+    private Integer minB,maxB;
     private Image ImagenOriginal;
     
     public Histograma(Image imagen){
@@ -47,6 +50,7 @@ public class Histograma {
                 this.b[b]++;
             }
         }
+        calcularMinimosYMaximos();
     }
     
     public void graficar(){
@@ -124,6 +128,96 @@ public class Histograma {
         return gr;
     }
 
+    public Integer getMinR() {
+        return minR;
+    }
+
+    public void setMinR(Integer minR) {
+        this.minR = minR;
+    }
+
+    public Integer getMaxR() {
+        return maxR;
+    }
+
+    public void setMaxR(Integer maxR) {
+        this.maxR = maxR;
+    }
+
+    public Integer getMinG() {
+        return minG;
+    }
+
+    public void setMinG(Integer minG) {
+        this.minG = minG;
+    }
+
+    public Integer getMaxG() {
+        return maxG;
+    }
+
+    public void setMaxG(Integer maxG) {
+        this.maxG = maxG;
+    }
+
+    public Integer getMinB() {
+        return minB;
+    }
+
+    public void setMinB(Integer minB) {
+        this.minB = minB;
+    }
+
+    public Integer getMaxB() {
+        return maxB;
+    }
+
+    public void setMaxB(Integer maxB) {
+        this.maxB = maxB;
+    }
+
     
+    
+    private void calcularMinimosYMaximos(){
+    this.minR = -1;
+    this.minG = -1;
+    this.minB = -1;
+    this.maxR = 256;
+    this.maxG = 256;
+    this.maxB = 256;
+
+    for(int t1 = 0, t2= r.length-1; minR==-1 || maxR==256 ;t1++,t2--){
+        if(r[t1]!=0 && minR ==-1){
+            minR = t1;
+        }
+        if(r[t2]!=0 && maxR==256){
+            maxR = t2;
+        }
+       
+    }
+
+    for(int t1 = 0, t2= g.length-1; minG==-1 || maxG==256 ;t1++,t2--){
+        if(g[t1]!=0 && minG ==-1){
+            minG = t1;
+        }
+        if(g[t2]!=0 && maxG==256){
+            maxG = t2;
+        }
+       
+    }
+
+    for(int t1 = 0, t2= b.length-1; minB==-1 || maxB==256 ;t1++,t2--){
+        if(b[t1]!=0 && minB ==-1){
+            minB = t1;
+        }
+        if(b[t2]!=0 && maxB==256){
+            maxB = t2;
+        }
+       
+    }
+    
+   System.out.println();
+
+ }
     
 }

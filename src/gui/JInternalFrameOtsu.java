@@ -5,26 +5,27 @@
  */
 package gui;
 
-
+import Espacial.Espacial;
+import Espacial.Histograma;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import Espacial.Espacial;
+
 /**
  *
  * @author Abelardo
  */
-public class JInternalFrameUmbraAutomatica extends javax.swing.JInternalFrame {
-    private JInternalFrameImagen internal;
+public class JInternalFrameOtsu extends javax.swing.JInternalFrame {
+ private JInternalFrameImagen internal;
     private Image imagenOriginal;
     private Espacial e;
     /**
-     * Creates new form JInternalFrameUmbraAutomatica
+     * Creates new form JInternalFrameOtsu
      */
-    public JInternalFrameUmbraAutomatica(JInternalFrameImagen internal) {
-        this.internal = internal;
+    public JInternalFrameOtsu(JInternalFrameImagen internal) {
         initComponents();
+        this.internal = internal;
         this.imagenOriginal = herramientas.HerramientasImagen.copiarImagen(internal.getImagenOriginal());
-        
     }
 
     /**
@@ -40,9 +41,8 @@ public class JInternalFrameUmbraAutomatica extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Umbralización Automática");
 
-        jButton1.setText("Umbralizar");
+        jButton1.setText("Umbralización Otzu");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -55,15 +55,15 @@ public class JInternalFrameUmbraAutomatica extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(30, 30, 30)
                 .addComponent(jButton1)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -71,8 +71,24 @@ public class JInternalFrameUmbraAutomatica extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        Histograma h = new Histograma(internal.getImagenOriginal());
+        h.calcularHistograma();
         BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagenOriginal);
-        Image nueva = herramientas.HerramientasImagen.toImage(e.UmbralizacionAuto(imagenOriginal));
+        int u = e.otsu(h.getGr());
+        System.out.println("Umbral="+u);
+        Color color, colorFondo, Cobjeto;
+        colorFondo = new Color(0,0,0);
+        for(int x=0; x<bi.getWidth();x++)
+            for(int y=0; y<bi.getHeight();y++){
+            color = new Color(bi.getRGB(x, y));
+            int prom = (color.getRed()+ color.getGreen()+color.getBlue())/3;
+            if ( prom < u){
+               bi.setRGB(x,y,colorFondo.getRGB());
+            }
+
+        }
+        Image nueva = herramientas.HerramientasImagen.toImage(bi);
         internal.setImagen(nueva); 
     }//GEN-LAST:event_jButton1ActionPerformed
 

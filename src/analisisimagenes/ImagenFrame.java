@@ -3,35 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package analisisimagenes;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import Espacial.Histograma;
 
 /**
  *
- * @author working
+ * @author Abelardo
  */
-public class JInternalFrameImagen extends javax.swing.JInternalFrame {
+public class ImagenFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form JInternalFrameImagen
+     * Creates new form ImagenFrame
      */
-    private Image imagenOriginal;
-    private Histograma h;
-    public JInternalFrameImagen(Image imagenOriginal) {
-        this.imagenOriginal = imagenOriginal;
+    public ImagenFrame(Image imagen) {
         initComponents();
-        // establecer la imagen en la etiqueta
-        this.jLabelImagen.setIcon(new ImageIcon(imagenOriginal));
-        this.setSize(imagenOriginal.getWidth(null),imagenOriginal.getHeight(null));
-                
-    }
-    
-    public void setImagen(Image imagenNueva){
-        this.imagenOriginal = imagenNueva;
-        this.jLabelImagen.setIcon(new ImageIcon(imagenNueva));
+        this.jLabel1.setIcon(new ImageIcon(imagen));
+        
+        setSize(imagen.getHeight(null),imagen.getWidth(null));
+        setVisible(true);
     }
 
     /**
@@ -43,41 +34,38 @@ public class JInternalFrameImagen extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelImagen = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(240, 230, 240));
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabelImagen)
-                .addGap(0, 627, Short.MAX_VALUE))
+                .addGap(160, 160, 160)
+                .addComponent(jLabel1)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabelImagen)
-                .addGap(0, 424, Short.MAX_VALUE))
+                .addGap(134, 134, 134)
+                .addComponent(jLabel1)
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @param args the command line arguments
+     */
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelImagen;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * @return the imagenOriginal
-     */
-    public Image getImagenOriginal() {
-        return imagenOriginal;
-    }
 }
