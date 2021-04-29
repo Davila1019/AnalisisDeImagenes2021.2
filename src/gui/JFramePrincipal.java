@@ -15,7 +15,8 @@ import listeners.InternalFrameListener;
  * @author working
  */
 public class JFramePrincipal extends javax.swing.JFrame {
-
+    
+    
     /**
      * Creates new form JFramePrincipa
      */
@@ -32,6 +33,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         this.jMenuItem9.addActionListener(n);
         this.jMenuItem10.addActionListener(n);
         this.jMenuItem8.addActionListener(n);
+        this.jMenuItem12.addActionListener(n);
     }
 
     /**
@@ -47,6 +49,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -57,6 +60,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +79,14 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuItem1.setText("AbrirImagen");
         jMenu1.add(jMenuItem1);
+
+        jMenuItem11.setText("Guardar Imagen");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem11);
 
         jMenuBar1.add(jMenu1);
 
@@ -107,6 +119,14 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem10.setText("Expansión");
         jMenu2.add(jMenuItem10);
 
+        jMenuItem12.setText("Convolución");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem12);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -124,6 +144,15 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,6 +197,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

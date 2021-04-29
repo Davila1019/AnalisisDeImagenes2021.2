@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import herramientas.*;
 import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -21,17 +23,24 @@ import java.awt.image.BufferedImage;
 public class InternalFrameListener implements ActionListener{
      
     private  JFramePrincipal framePrincipal;
-
+    private  JInternalFrameImagen internal;
     public InternalFrameListener(JFramePrincipal framePrincipal) {
         this.framePrincipal = framePrincipal;
     }
         
     @Override
     public void actionPerformed(ActionEvent e) {
-       Image imagen = herramientas.HerramientasImagen.abrirImagen();
-       JInternalFrameImagen nuevo = new JInternalFrameImagen(imagen);
-       nuevo.setVisible(true);
-       this.framePrincipal.getjDesktopPanePrincipal().add(nuevo);
+       JMenuItem item = (JMenuItem)e.getSource();
+       if(item.getText().equals("AbrirImagen")){
+        Image imagen = herramientas.HerramientasImagen.abrirImagen();
+        JInternalFrameImagen nuevo = new JInternalFrameImagen(imagen);
+        nuevo.setVisible(true);
+        this.framePrincipal.getjDesktopPanePrincipal().add(nuevo);
+        }
+       if(item.getText().equals("Guardar Imagen")){
+       
+        }
+       
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package analisisimagenes;
 
+import Espacial.Convolucion;
 import Espacial.Espacial;
 import Espacial.Histograma;
 import gui.JInternalFrameImagen;
@@ -26,15 +27,21 @@ public class AnalisisImagenes20212 {
         Espacial e = new Espacial();
         Image imagen = herramientas.HerramientasImagen.abrirImagen();
         // para cuantización de la imagen vamos a un ocupar BufferedImage
-        BufferedImage bImagen = herramientas.HerramientasImagen.toBufferedImage(imagen);
-        Histograma h =new Histograma(imagen);
-        h.calcularHistograma();
-        h.graficar();
-        int r = e.otsu(h.getGr());
-        e.Binarizacion(bImagen, r);
-        imagen = herramientas.HerramientasImagen.toImage(bImagen);
-        ImagenFrame i = new ImagenFrame(imagen);
-        System.out.println(r);
+//        BufferedImage bImagen = herramientas.HerramientasImagen.toBufferedImage(imagen);
+//        Histograma h =new Histograma(imagen);
+//        h.calcularHistograma();
+//        h.graficar();
+//        int r = e.otsu(h.getGr());
+//        e.Binarizacion(bImagen, r);
+//        imagen = herramientas.HerramientasImagen.toImage(bImagen);
+//        ImagenFrame i = new ImagenFrame(imagen);
+        Convolucion c = new Convolucion(imagen);
+        double kernel[][] = {{0,0,0,0,0},{0,0,-1,0,0},{0,-1,5,-1,0},{0,0,-1,0,0},{0,0,0,0,0}};
+        
+        
+       // Image imagenNueva = c.aplicar(kernel, 1);
+       // ImagenFrame i = new ImagenFrame(imagenNueva);
+//        System.out.println(r);
         
     }
     

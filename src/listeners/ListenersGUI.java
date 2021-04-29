@@ -8,6 +8,7 @@ package listeners;
 import gui.InternalFrameUmbralizacion;
 import gui.JFramePrincipal;
 import gui.JInternalFrameBinarizacion;
+import gui.JInternalFrameConvolucion;
 import gui.JInternalFrameExpansion;
 import gui.JInternalFrameGris;
 import gui.JInternalFrameHistograma;
@@ -85,6 +86,12 @@ public class ListenersGUI implements ActionListener{
         if(item.getText().equals("Histograma")){
             JInternalFrameImagen internal = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
             JInternalFrameHistograma internalNuevo = new JInternalFrameHistograma(internal);
+            internalNuevo.setVisible(true);
+            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo);
+        }
+        if(item.getText().equals("Convolución")){
+            JInternalFrameImagen internal = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
+            JInternalFrameConvolucion internalNuevo = new JInternalFrameConvolucion(internal);
             internalNuevo.setVisible(true);
             this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo);
         }
