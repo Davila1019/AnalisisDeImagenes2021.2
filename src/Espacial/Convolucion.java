@@ -17,7 +17,17 @@ public class Convolucion {
     private int dim;
     private Image imagenOriginal;
     private double kernel[][];
-
+    private static double[][] kirsch1 = {{-3, -3, 5}, {-3, 0, 5}, {-3, -3, 5}};
+    private static double[][] kirsch2 = {{-3, 5, 5}, {-3, 0, 5}, {-3, -3, -3}};
+    private static double[][] kirsch3 = {{5, 5, 5}, {-3, 0, -3}, {-3, -3, -3}};
+    private static double[][] kirsch4 = {{5, 5, -3}, {5, 0, -3}, {-3, -3, -3}};
+    private static double[][] kirsch5 = {{5, -3, -3}, {5, 0, -3}, {5, -3, -3}};
+    private static double[][] kirsch6 = {{-3, -3, -3}, {5, 0, -3}, {5, 5, -3}};
+    private static double[][] kirsch7 = {{-3, -3, -3}, {-3, 0, -3}, {5, 5, 5}};
+    private static double[][] kirsch8 = {{-3, -3, -3}, {-3, 0, 5}, {-3, 5, 5}};
+    public static double[][][] arregloMascaras = {kirsch1, kirsch2, kirsch3,
+        kirsch4, kirsch5, kirsch6,
+        kirsch7, kirsch8};
     public Convolucion(Image imagenOriginal) {
         this.dim = 0;
         this.imagenOriginal = imagenOriginal;
@@ -93,5 +103,57 @@ public class Convolucion {
         acumuladorB+=offset;
         return new Color((int)Espacial.validarLimites(acumuladorR),(int)Espacial.validarLimites(acumuladorG),(int)Espacial.validarLimites(acumuladorB));
         
+    }
+    
+    private Color convolucionarKirsch(double[][] muestra, int divisor) {
+        // recorremos las mascaras 
+        int mayorR = -1;
+        int mayorG = -1;
+        int mayorB = -1;
+        int r,g,b;
+        for(int i=0; i<8;i++){
+           Color color = convolucionar(arregloMascaras[i], muestra, divisor,1);
+           r = color.getRed();
+           g = color.getGreen();
+           b = color.getBlue();
+           if(r>mayorR)mayorR=r;
+           if(g>mayorG)mayorG=g;
+           if(b>mayorB)mayorB=b;
+        
+        }
+        return new Color(Espacial.validarLimites(mayorR),Espacial.validarLimites(mayorG), Espacial.validarLimites(mayorB));
+        
+    }
+    
+     public Image aplicarKirsch(int divisor){
+       this.kernel = new double[5][5];
+       BufferedImage nueva = new BufferedImage(this.imagenOriginal.getWidth(null),this.imagenOriginal.getHeight(null),BufferedImage.TYPE_INT_RGB);
+       BufferedImage bi = herramientas.HerramientasImagen.toBufferedImage(imagenOriginal);
+        
+       //System.out.println("W:"+nueva.getWidth()+"H:"+nueva.getHeight());
+       //proceso iterativo para generar un imagen nueva
+       for(int x=0; x<this.imagenOriginal.getWidth(null);x++){
+           for(int y=0; y<this.imagenOriginal.getHeight(null);y++){
+           double muestra[][] =extraerMuestra(x,y,bi);
+            //System.out.println(x+","+y);
+            // validar que la muestra se generó 
+            if(muestra!=null){
+             // proceso evolutivo para Kirsch
+            // recorremos las mascaras     
+                 
+           // Color colorRes = convulacionar(kernel,muestra,divisor);
+            Color colorRes = convolucionarKirsch(muestra,divisor);
+            
+            nueva.setRGB(x, y, colorRes.getRGB());
+            
+            }else{
+            nueva.setRGB(x, y, new Color(255,255,255).getRGB());
+            
+            }
+                 
+           }
+       }
+       
+       return herramientas.HerramientasImagen.toImage(nueva);
     }
 }
