@@ -22,8 +22,8 @@ public class Suavizado {
        
         Color color;
     // recorres el buffer
-        for(int x=0; x < bi.getHeight();x++){
-            for(int y=0; y < bi.getWidth();y++){
+        for(int y=0; y < bi.getHeight();y++){
+            for(int x=0; x < bi.getWidth();x++){
             color = new Color(calcularNuevoTono(x,y,bi,mascara));
             
             bi.setRGB(x, y, color.getRGB());
@@ -41,11 +41,15 @@ public class Suavizado {
         for(int i = 0 , r = x -1; i<mascara.length;i++, r++){
             for(int j = 0, c = y -1; j < mascara[0].length;j++, c++){
                 if(mascara[i][j]!=0){
+                    try{
                         color = new Color(bi.getRGB(r, c));
                         k++;
                         auxR+= color.getRed();
                         auxG+= color.getGreen();
                         auxB+= color.getBlue();
+                    }catch(Exception e){
+                        
+                    }
                 }
             }
         }
