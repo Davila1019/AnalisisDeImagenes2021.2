@@ -15,6 +15,8 @@ import gui.JInternalFrameHistograma;
 import gui.JInternalFrameImagen;
 import gui.JInternalFrameModificar;
 import gui.JInternalFrameOtsu;
+import gui.JInternalFrameRuido;
+import gui.JInternalFrameSuavizado;
 import gui.JInternalFrameUmbraAutomatica;
 import gui.JInternalIluminar;
 import java.awt.event.ActionEvent;
@@ -92,6 +94,18 @@ public class ListenersGUI implements ActionListener{
         if(item.getText().equals("Convolución")){
             JInternalFrameImagen internal = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
             JInternalFrameConvolucion internalNuevo = new JInternalFrameConvolucion(internal);
+            internalNuevo.setVisible(true);
+            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo);
+        }
+        if(item.getText().equals("Suavizado")){
+            JInternalFrameImagen internal = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
+            JInternalFrameSuavizado internalNuevo = new JInternalFrameSuavizado(internal);
+            internalNuevo.setVisible(true);
+            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo);
+        }
+        if(item.getText().equals("Ruido")){
+            JInternalFrameImagen internal = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
+            JInternalFrameRuido internalNuevo = new JInternalFrameRuido(internal);
             internalNuevo.setVisible(true);
             this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo);
         }
