@@ -10,6 +10,7 @@ import gui.JFramePrincipal;
 import gui.JInternalFrameBinarizacion;
 import gui.JInternalFrameConvolucion;
 import gui.JInternalFrameExpansion;
+import gui.JInternalFrameFFT;
 import gui.JInternalFrameGris;
 import gui.JInternalFrameHistograma;
 import gui.JInternalFrameImagen;
@@ -106,6 +107,11 @@ public class ListenersGUI implements ActionListener{
         if(item.getText().equals("Ruido")){
             JInternalFrameImagen internal = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
             JInternalFrameRuido internalNuevo = new JInternalFrameRuido(internal);
+            internalNuevo.setVisible(true);
+            this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo);
+        }if(item.getText().equals("Transformada")){
+            JInternalFrameImagen internal = (JInternalFrameImagen) this.framePrincipal.getjDesktopPanePrincipal().getSelectedFrame();
+            JInternalFrameFFT internalNuevo = new JInternalFrameFFT(internal);
             internalNuevo.setVisible(true);
             this.framePrincipal.getjDesktopPanePrincipal().add(internalNuevo);
         }

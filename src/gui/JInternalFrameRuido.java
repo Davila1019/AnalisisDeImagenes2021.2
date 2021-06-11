@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class JInternalFrameRuido extends javax.swing.JInternalFrame {
     private JInternalFrameImagen internal;
     private Image imagenOriginal , nueva;
+    
     /**
      * Creates new form JInternalFrameRuido
      */
